@@ -41,7 +41,7 @@ export default class Routisan {
     }
 
     _updateGroupStack (options) {
-        options = filterOptions(options, ['beforeEnter', 'prefix']);
+        options = filterOptions(options, ['beforeEnter', 'prefix', 'meta']);
 
         if (this._groupStack.length) {
             options = groupMerge(options, this._groupStack.slice().reverse()[0]);

@@ -46,9 +46,16 @@ const mergeGuard = ($new, $old) => {
     return ($new.hasOwnProperty('beforeEnter') ? $old.concat(getArray($new.beforeEnter)) : $old);
 };
 
+const mergeMeta = ($new, $old) => {
+    $old = ($old.hasOwnProperty('meta') ? getArray($old.meta) : []);
+
+    return ($new.hasOwnProperty('meta') ? $old.concat(getArray($new.meta)) : $old);
+};
+
 export const groupMerge = ($new, $old) => {
     return {
         beforeEnter: mergeGuard($new, $old),
-        prefix: mergePrefix($new, $old)
+        prefix: mergePrefix($new, $old),
+        meta: mergeMeta($new, $old)
     };
 };
